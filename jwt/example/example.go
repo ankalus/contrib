@@ -17,11 +17,11 @@ func main() {
 	public := r.Group("/api")
 
 	public.GET("/", func(c *gin.Context) {
-		// Create the token
-		token := jwt_lib.New(jwt_lib.GetSigningMethod("HS256"))
-		// Set some claims
-		token.Claims["ID"] = "Christopher"
-		token.Claims["exp"] = time.Now().Add(time.Hour * 1).Unix()
+		// Create the token with some claims
+		token := jwt_lib.NewWithClaims(jwt_lib.SigningMethodHS256, jwt_lib.MapClaims{
+			"ID": "Christopher",
+			"exp": time.Now().Add(time.Hour * 1).Unix(),
+		})
 		// Sign and get the complete encoded token as a string
 		tokenString, err := token.SignedString([]byte(mysupersecretpassword))
 		if err != nil {
