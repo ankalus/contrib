@@ -2,7 +2,7 @@ package main
 
 import (
 	jwt_lib "github.com/dgrijalva/jwt-go"
-	"github.com/gin-gonic/contrib/jwt"
+	"github.com/ankalus/contrib/jwt"
 	"github.com/gin-gonic/gin"
 	"time"
 )
