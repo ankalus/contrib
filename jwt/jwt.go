@@ -7,7 +7,7 @@ import (
 
 func Auth(secret string) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		_, err := jwt_lib.ParseFromRequest(c.Request, func(token *jwt_lib.Token) (interface{}, error) {
+		_, err := jwt_lib.Parse(c.Request, func(token *jwt_lib.Token) (interface{}, error) {
 			b := ([]byte(secret))
 			return b, nil
 		})
