@@ -8,8 +8,7 @@ import (
 
 func Auth(secret string) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		token
-		_, err := jwt_request_lib.ParseFromRequest(c.Request, ArgumentExtractor{"token"}, func(token *jwt_lib.Token) (interface{}, error) {
+		_, err := jwt_request_lib.ParseFromRequest(c.Request, jwt_request_lib.ArgumentExtractor{"token"}, func(token *jwt_lib.Token) (interface{}, error) {
 			b := ([]byte(secret))
 			return b, nil
 		})
